@@ -96,10 +96,10 @@ if __name__ == "__main__":
     temporal_env, t_env, audio_abs = tenv.morph_close(audio, fs=fs, n=frame_size)
     
     plt.figure(figsize=(18,6))
-#    plt.plot(t, audio, color='black')
+    plt.plot(t, audio, color='black', alpha=0.5)
     plt.grid()
     plt.axis('tight')
-    plt.plot(t_env,  max(audio_abs)*temporal_env/max(temporal_env), color='blue', lw=2)
-#    plt.fill_between(t, 0, max(audio_abs)*temporal_env/max(temporal_env), facecolor='blue', alpha=0.2)
+    plt.plot(t,  max(audio_abs)*temporal_env/max(temporal_env), color='blue', lw=0.5)
+    plt.fill_between(t, 0, max(audio_abs)*temporal_env/max(temporal_env), facecolor='blue', alpha=0.8)
     plt.show()
 
