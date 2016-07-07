@@ -8,7 +8,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 import scipy.signal as signal
 import scipy.io.wavfile as wav
-import csv
 import tradataset as td
 
 
@@ -58,4 +57,10 @@ if __name__ == "__main__":
     plt.plot(t,  max(audio_abs)*temporal_env/max(temporal_env), color='blue', lw=0.5)
     plt.fill_between(t, 0, max(audio_abs)*temporal_env/max(temporal_env), facecolor='blue', alpha=0.8)
     plt.show()
+    
+#%% ESTIMATE PITCH
+
+    import frequency_to_notation as pe    
+    
+    pitch_midi = pe.pitch_extraction(audio, fs, frame_size, (frame_size-op))
 
