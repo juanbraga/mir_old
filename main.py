@@ -83,6 +83,7 @@ if __name__ == "__main__":
     plt.plot(timestamps , pitch_midi,'.-',color='blue', lw=0.3)
 #    plt.fill_between(timestamps, midigt, int_melonotes, facecolor='cyan', label='diference', alpha=0.2)
 
+    plt.title("Melody")
     plt.ylabel("Pitch (Midi)")
     plt.xlabel("Time (s)")
     
