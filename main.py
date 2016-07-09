@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     ltrdataset = td.load_list()    
 
-    fragment = ltrdataset[8]    
+    fragment = ltrdataset[3]    
     
     audio_file = fragment + '_mono.wav'
     gt_file = fragment + '.csv'
@@ -38,10 +38,10 @@ if __name__ == "__main__":
     plt.pcolormesh(t_S, f, 20*np.log(Sxx))
     plt.axis('tight')
     plt.subplot(3,1,3)
-    plt.plot(t, audio, color='black', alpha=0.7)
+    plt.plot(t, audio, color='black', alpha=0.6)
     plt.grid()
     plt.axis('tight')
-    plt.fill_between(t, -vad_gt*(2**12), vad_gt*(2**12), facecolor='blue', alpha=0.2)
+    plt.fill_between(t, -vad_gt*(2**12), vad_gt*(2**12), facecolor='yellow', alpha=0.3)
     plt.show()
 
 #%% ESTIMATE VAD
@@ -62,5 +62,28 @@ if __name__ == "__main__":
 
     import frequency_to_notation as pe    
     
-    pitch_midi = pe.pitch_extraction(audio, fs, frame_size, (frame_size-op))
+    hop = (frame_size-op)
+    pitch_midi, timestamps = pe.pitch_extraction(audio, fs, frame_size, hop)
 
+    fig = plt.figure(figsize=(18,6))                                                               
+    ax = fig.add_subplot(1,1,1)                                                      
+    
+    yticks_major = [ 59, 60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77, 79, 81, 83, 84, 86, 88, 89, 91, 93, 95, 96 ]
+    yticks_minor = [ 61, 63, 66, 68, 70, 73, 75, 78, 80, 82, 85, 87, 90, 92, 94 ]
+#    yticks_labels = ['B3', 'C4', 'D4', 'E4', 'F4', 'G4', 'A4', 'B4', 'C5', 'D5', 'E5', 'F5', 'G5', 'A5', 'B5', 'C6', 'D6', 'E6', 'F6', 'G6', 'A6', 'B6', 'C7']                         
+                                             
+    ax.set_yticks(yticks_major)                                                       
+#    ax.set_ytickslabels(yticks_labels)       
+    ax.set_yticks(yticks_minor, minor=True)
+                                    
+    plt.ylim(58, 96) #flute register in midi    
+    ax.grid(b=True, which='major', color='black', axis='y', linestyle='-', alpha=0.6)
+    ax.grid(b=True, which='minor', color='black', axis='y', linestyle='-', alpha=1)    
+    
+    plt.plot(timestamps , pitch_midi,'.-',color='blue', lw=0.3)
+#    plt.fill_between(timestamps, midigt, int_melonotes, facecolor='cyan', label='diference', alpha=0.2)
+
+    plt.ylabel("Pitch (Midi)")
+    plt.xlabel("Time (s)")
+    
+    plt.show()
