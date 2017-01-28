@@ -1,0 +1,10 @@
+\begin{thebibliography}{}
+
+\bibitem[Raffel et~al., 2014]{raffel2014mir_eval}
+Raffel, C., McFee, B., Humphrey, E.~J., Salamon, J., Nieto, O., Liang, D.,
+  Ellis, D.~P., and Raffel, C.~C. (2014).
+\newblock mir\_eval: A transparent implementation of common mir metrics.
+\newblock In {\em In Proceedings of the 15th International Society for Music
+  Information Retrieval Conference, ISMIR}. Citeseer.
+
+\end{thebibliography}
