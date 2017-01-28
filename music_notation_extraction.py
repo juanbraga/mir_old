@@ -23,14 +23,14 @@ if __name__ == "__main__":
 
     ltrdataset = td.load_list()    
 
-    fragment = ltrdataset[12]    
+    fragment = ltrdataset[7]    
     
     audio_file = fragment + '_mono.wav'
     gt_file = fragment + '.csv'
     score_file = fragment + '.xml'
 
     audio, t, fs = td.load_audio(audio_file)
-    vad_gt, gt, onset_gt = td.load_gt(gt_file, t)    
+    vad_gt, gt, onset_gt, melo = td.load_gt(gt_file, t)    
 
     frame_size = 1024
     op = 0    

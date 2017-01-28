@@ -17,7 +17,7 @@ if __name__=='__main__':
     score_file = fragment + '.xml'       
 
     audio, t, fs = td.load_audio(audio_file)
-    vad_gt, gt, onset_gt = td.load_gt(gt_file, t)        
+    vad_gt, gt, onset_gt, melo = td.load_gt(gt_file, t)        
     score, thenotes = td.load_score(score_file)
     
     #PITCH EXTRACTION

@@ -20,7 +20,7 @@ if __name__=='__main__':
     hop=frame_size
     
     audio, t, fs = td.load_audio(audio_file)
-    vad_gt, gt, onset_gt = td.load_gt(gt_file, t, frame=frame_size)        
+    vad_gt, gt, onset_gt, melo = td.load_gt(gt_file, t, frame=frame_size)        
     score, thenotes = td.load_score(score_file)
     
     #DTW GT VS. SYMBOLIC SCORE       
